@@ -11,6 +11,7 @@ import Pages.NavPage;
 import Pages.SignUpPage;
 import Pages.MessagePopUpPage;
 import Pages.CitiesPage;
+import Pages.ProfilePage;
 
 import java.time.Duration;
 public abstract class BasicTest {
@@ -21,6 +22,7 @@ public abstract class BasicTest {
         protected SignUpPage singupPage;
          protected MessagePopUpPage messagePopUpPage;
         protected CitiesPage citiesPage;
+        protected ProfilePage profilePage;
 
     @BeforeClass
     public void setup() {
@@ -34,6 +36,7 @@ public abstract class BasicTest {
         singupPage = new SignUpPage(driver,wait);
         messagePopUpPage = new MessagePopUpPage(driver, wait);
         citiesPage = new CitiesPage(driver, wait);
+        profilePage = new ProfilePage(driver, wait);
 
     }
     @BeforeMethod
