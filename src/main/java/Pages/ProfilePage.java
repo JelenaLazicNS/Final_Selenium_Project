@@ -1,10 +1,8 @@
 package Pages;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.JavascriptExecutor;
+
 
 public class ProfilePage extends BasicPage{
     public ProfilePage(WebDriver driver, WebDriverWait wait) {
@@ -67,5 +65,56 @@ public class ProfilePage extends BasicPage{
     }
     public String checkPhoneFieldByTypeAttribute(){
         return getPhoneField().getAttribute("type");
+    }
+    public void replaceName(String name){
+        getNameField().click();
+        getNameField().sendKeys(Keys.chord(Keys.CONTROL, "a"), name);
+    }
+    public void replacePhone(String phone){
+        getPhoneField().click();
+        getPhoneField().sendKeys(Keys.chord(Keys.CONTROL, "a"), phone);
+    }
+    public void replaceCity(String city){
+
+        getCityField().sendKeys(Keys.CONTROL + "a");
+        getCityField().click();
+        getCityField().sendKeys(Keys.chord(Keys.CONTROL, "a"), city);
+    }
+    public void replaceCountry(String country){
+        getCountryField().click();
+        getCountryField().sendKeys(Keys.chord(Keys.CONTROL, "a"), country);
+    }
+    public void replaceTwitter(String twitter){
+        getTwitterField().click();
+        getTwitterField().sendKeys(Keys.chord(Keys.CONTROL, "a"), twitter);
+    }
+    public void replaceGitHub(String github){
+
+        getGitHubField().click();
+        getGitHubField().sendKeys(Keys.chord(Keys.CONTROL, "a"), github);
+    }
+    public WebElement getSaveButton () {
+        return driver.findElement(By.className("btnSave"));
+    }
+    public void clickOnSaveButton () {
+        getSaveButton().click();
+    }
+    public String getNameFieldValue() {
+        return getNameField().getAttribute("value");
+    }
+    public String getPhoneFieldValue() {
+        return getPhoneField().getAttribute("value");
+    }
+    public String getCityFieldValue() {
+        return getCityField().getAttribute("value");
+    }
+    public String getCountryFieldValue() {
+        return getCountryField().getAttribute("value");
+    }
+    public String getTwitterFieldValue() {
+        return getTwitterField().getAttribute("value");
+    }
+    public String getGitHubFieldValue() {
+        return getGitHubField().getAttribute("value");
     }
 }

@@ -46,6 +46,18 @@ public class MessagePopUpPage extends BasicPage {
     public String getDeletedSuccessfullyText(){
         return getDeletedSuccessfullyPopup().getText();
     }
+    public WebElement getPopUpMessageForSuccessfulActions() {
+        return driver.findElement(By.cssSelector(".success .v-snack__content"));
+    }
+    public void waitUntilPopUpMessageForSuccessfulProfileUpdateIsVisible () {
+        wait
+                .withMessage("Pop-up message for successful profile update should be visible.")
+                .until(ExpectedConditions.visibilityOf(getPopUpMessageForSuccessfulActions()));
+    }
+    public boolean getTextFromPopUpMessageForSuccessfulProfileUpdate () {
+        return getPopUpMessageForSuccessfulActions().getText().contains("Profile saved successfuly");
+    }
+
 
 
 
