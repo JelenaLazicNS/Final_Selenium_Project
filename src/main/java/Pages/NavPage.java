@@ -24,11 +24,21 @@ public class NavPage extends BasicPage{
     public void clickOnEnglishLanguage(){
         getEnglishLanguage().click();
     }
-    public WebElement getLoginNavButton () {
+    public static WebElement getLoginNavButton() {
         return driver.findElement(By.cssSelector(" div.v-toolbar__items > a:nth-child(3) > span"));
     }
-    public void clickOnLoginNavButton () {
+    public static void clickOnLoginNavButton() {
         getLoginNavButton().click();
     }
-
+    public WebElement getLogoutButton () {
+        return driver.findElement(By.className("btnLogout"));
+    }
+    public void clickOnLogoutButton () {
+        getLogoutButton().click();
+    }
+    public void waitUntilLogoutButtonIsVisible () {
+        wait
+                .withMessage("Logout button should be visible.")
+                .until(ExpectedConditions.visibilityOf(getLogoutButton()));
+    }
 }
