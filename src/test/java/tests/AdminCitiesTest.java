@@ -54,16 +54,30 @@ public class AdminCitiesTest extends BasicTest{
     @Test (priority = 4, retryAnalyzer = RetryAnalyzer.class)
     public void editCity(){
         String oldCityName = "Novi Sad";
-        String newCityName = "Subotica";
+        String editedCityName = "Subotica";
 
         navPage.clickOnAdminButton();
         citiesPage.clickOnCitiesButton();
         citiesPage.sendValueOnSearchField(oldCityName);
         citiesPage.waitForNumberOfRowsInTableToBe(1);
         citiesPage.clickOnEditButtonForFirstRow();
-        citiesPage.enterCityName(newCityName);
+        citiesPage.enterCityName(editedCityName);
         citiesPage.clickOnSaveButton();
         messagePopUpPage.waitForSavedSuccefulyPopup();
         Assert.assertTrue(citiesPage.getMessagePopupText().contains("Saved successfully"));
+    }
+    @Test (priority = 5, retryAnalyzer = RetryAnalyzer.class)
+    public void searchCity(){
+        String editedCityName = "Subotica";
+        navPage.clickOnAdminButton();
+
+        citiesPage.clickOnCitiesButton();
+
+        citiesPage.sendValueOnSearchField(editedCityName);
+
+        citiesPage.waitForNumberOfRowsInTableToBe(1);
+
+        String firstRowCityName = citiesPage.getFirstRowName();
+        Assert.assertEquals(editedCityName, firstRowCityName);
     }
 }

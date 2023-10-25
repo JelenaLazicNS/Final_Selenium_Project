@@ -66,4 +66,9 @@ public class CitiesPage extends BasicPage {
     public void clickOnEditButtonForFirstRow() {
         driver.findElement(By.cssSelector("#edit")).click();
     }
+    public String getFirstRowName() {
+        WebElement firstRow = driver.findElement(By.cssSelector(".v-data-table__wrapper tbody tr:first-child"));
+        WebElement nameElement = firstRow.findElement(By.cssSelector("tbody > tr > td:nth-child(2)"));
+        return nameElement.getText();
+    }
 }
