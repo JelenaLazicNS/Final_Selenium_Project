@@ -87,4 +87,10 @@ public class NavPage extends BasicPage{
     public void clickOnChineseLanguage() {
         getChineseLanguage().click();
     }
+    public WebElement getFrenchLanguage(){
+        return driver.findElement(By.cssSelector("span.f-fr"));
+    }
+    public void clickOnFrenchLanguage() {
+        getFrenchLanguage().click();
+    }
 }
