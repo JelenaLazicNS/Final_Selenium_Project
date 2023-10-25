@@ -41,4 +41,10 @@ public class NavPage extends BasicPage{
                 .withMessage("Logout button should be visible.")
                 .until(ExpectedConditions.visibilityOf(getLogoutButton()));
     }
+    public WebElement getSingupButton(){
+        return driver.findElement(By.cssSelector(".v-toolbar__items > a:nth-child(4)"));
+    }
+    public void clickOnSingupButton(){
+        getSingupButton().click();
+    }
 }
