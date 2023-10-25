@@ -36,4 +36,19 @@ public class AdminCitiesTest extends BasicTest{
         WebElement cityInputField = citiesPage.getCityInputField();
         Assert.assertEquals(cityInputField.getAttribute("type"), "text");
     }
+    @Test (priority = 3, retryAnalyzer = RetryAnalyzer.class)
+    public void createNewCity(){
+        String city = "Novi Sad";
+
+        navPage.clickOnAdminButton();
+        citiesPage.clickOnCitiesButton();
+        citiesPage.clickOnNewItemButton();
+        citiesPage.waitForCreateEditCityDialogToAppear();
+        citiesPage.enterCityName(city);
+        citiesPage.clickOnSaveButton();
+        messagePopUpPage.waitForSavedSuccefulyPopup();
+
+        Assert.assertTrue(citiesPage.getMessagePopupText().contains("Saved successfully"));
+
+    }
 }

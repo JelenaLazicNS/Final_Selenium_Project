@@ -4,6 +4,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.Keys;
+import org.testng.Assert;
+import java.util.List;
 
 import java.time.Duration;
 
@@ -27,5 +30,19 @@ public class CitiesPage extends BasicPage{
 
     public WebElement getCityInputField() {
         return driver.findElement(By.cssSelector("#name"));
+    }
+    public void enterCityName(String cityName) {
+        WebElement cityNameInput = driver.findElement(By.cssSelector("#name"));
+        cityNameInput.sendKeys(Keys.CONTROL + "a");
+        cityNameInput.sendKeys(Keys.DELETE);
+        cityNameInput.sendKeys(cityName);
+    }
+
+    public void clickOnSaveButton(){
+        driver.findElement(By.cssSelector("div.v-card__actions > button.btnSave")).click();
+    }
+    public String getMessagePopupText() {
+        WebElement messagePopup = driver.findElement(By.cssSelector(".success .v-snack__content"));
+        return messagePopup.getText();
     }
 }
