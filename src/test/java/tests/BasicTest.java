@@ -10,6 +10,7 @@ import org.testng.annotations.BeforeMethod;
 import Pages.NavPage;
 import Pages.SignUpPage;
 import Pages.MessagePopUpPage;
+import Pages.CitiesPage;
 
 import java.time.Duration;
 public abstract class BasicTest {
@@ -19,6 +20,7 @@ public abstract class BasicTest {
         protected NavPage navPage;
         protected SignUpPage singupPage;
          protected MessagePopUpPage messagePopUpPage;
+        protected CitiesPage citiesPage;
 
     @BeforeClass
     public void setup() {
@@ -31,6 +33,7 @@ public abstract class BasicTest {
         navPage = new NavPage(driver, wait);
         singupPage = new SignUpPage(driver,wait);
         messagePopUpPage = new MessagePopUpPage(driver, wait);
+        citiesPage = new CitiesPage(driver, wait);
 
     }
     @BeforeMethod
