@@ -47,4 +47,21 @@ public class NavPage extends BasicPage{
     public void clickOnSingupButton(){
         getSingupButton().click();
     }
+    public WebElement getAdminButton(){
+        return driver.findElement(By.className("btnAdmin"));
+    }
+    public void clickOnAdminButton(){
+        getAdminButton().click();
+    }
+    public WebElement getCitiesButton(){
+        return driver.findElement(By.cssSelector("a[href=\"/admin/cities\"]"));
+    }
+    public void waitUntilCitiesIsVisible(){
+        wait
+                .withMessage("Cities button from dropdown should be visible.")
+                .until(ExpectedConditions.visibilityOf(getCitiesButton()));
+    }
+    public void clickOnCitiesButton(){
+        getCitiesButton().click();
+    }
 }
