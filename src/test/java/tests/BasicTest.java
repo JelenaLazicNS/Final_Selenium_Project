@@ -12,7 +12,13 @@ import Pages.SignUpPage;
 import Pages.MessagePopUpPage;
 import Pages.CitiesPage;
 import Pages.ProfilePage;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.testng.ITestResult;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
 public abstract class BasicTest {
         protected WebDriver driver;
@@ -44,8 +50,16 @@ public abstract class BasicTest {
         driver.navigate().to(baseUrl);
     }
     @AfterMethod
-    public void afterMethod () {
+    public void afterMethod (ITestResult result) {
         driver.manage().deleteAllCookies();
+        if (ITestResult.FAILURE == result.getStatus()) {
+            File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            try {
+                FileUtils.copyFile(screenshot, new File("screenshots/" + result.getName() + ".png"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
     @AfterClass
     public void afterClass(){
