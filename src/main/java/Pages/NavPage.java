@@ -81,4 +81,10 @@ public class NavPage extends BasicPage{
     public String getHeaderText () {
         return getHeader().getText();
     }
+    public WebElement getChineseLanguage(){
+        return driver.findElement(By.cssSelector("span.f-cn"));
+    }
+    public void clickOnChineseLanguage() {
+        getChineseLanguage().click();
+    }
 }
