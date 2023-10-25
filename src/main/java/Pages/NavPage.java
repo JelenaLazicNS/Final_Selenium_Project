@@ -19,7 +19,7 @@ public class NavPage extends BasicPage{
         getLanguageButton().click();
     }
     public WebElement getEnglishLanguage(){
-        return driver.findElement(By.cssSelector(".btnLocaleActivation"));
+        return driver.findElement(By.cssSelector("span.f-gb"));
     }
     public void clickOnEnglishLanguage(){
         getEnglishLanguage().click();
@@ -63,5 +63,22 @@ public class NavPage extends BasicPage{
     }
     public void clickOnCitiesButton(){
         getCitiesButton().click();
+    }
+    public void waitUntilLanguageListIsVisible() {
+        //WebDriverWait wait = new WebDriverWait(driver, wait);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"app\"]/div[2]/div")));
+    }
+
+    public WebElement getSpanishLanguage(){
+        return driver.findElement(By.cssSelector("span.f-es"));
+    }
+    public void clickOnSpanishLanguage(){
+        getSpanishLanguage().click();
+    }
+    public WebElement getHeader () {
+        return driver.findElement(By.cssSelector("h1.display-2"));
+    }
+    public String getHeaderText () {
+        return getHeader().getText();
     }
 }
