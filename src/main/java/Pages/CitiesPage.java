@@ -71,4 +71,14 @@ public class CitiesPage extends BasicPage {
         WebElement nameElement = firstRow.findElement(By.cssSelector("tbody > tr > td:nth-child(2)"));
         return nameElement.getText();
     }
+    public void clickOnDeleteButtonForFirstRow() {
+        driver.findElement(By.cssSelector("#delete")).click();
+    }
+    public void waitForDeletePopUpMessage(){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div > header > div > .v-toolbar__title")));
+    }
+    public void clickOnDeleteButton(){
+        WebElement deleteButton = driver.findElement(By.cssSelector(" .v-dialog--active  div > div.v-card__actions button:nth-child(3)"));
+        deleteButton.click();
+    }
 }

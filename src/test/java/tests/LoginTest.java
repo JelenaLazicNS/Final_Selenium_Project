@@ -39,7 +39,7 @@ public class LoginTest extends BasicTest {
         LoginPage.autoLogin(email,password);
         messagePopUpPage.waitForErrorPopupToBeVisible();
 
-        String errorMessage = messagePopUpPage.getErrorPopupMessage();
+        String errorMessage = messagePopUpPage.getTextForVerifPopupMessage();
         Assert.assertEquals(errorMessage, "User does not exists", "Message from popup should be like expected message");
 
         Assert.assertEquals(driver.getCurrentUrl(), baseUrl + "/login", "Urls should be similar.");
@@ -56,7 +56,7 @@ public class LoginTest extends BasicTest {
         LoginPage.autoLogin(email,password);
         messagePopUpPage.waitForErrorPopupToBeVisible();
 
-        String errorMessage = messagePopUpPage.getErrorPopupMessage();
+        String errorMessage = messagePopUpPage.getErrorPopupMessageText();
         Assert.assertEquals(errorMessage, "Wrong password", "Message from popup should be contains \"Wrong password\"" );
 
         Assert.assertEquals(driver.getCurrentUrl(), baseUrl + "/login", "Urls should be similar.");
