@@ -29,15 +29,7 @@ public class LoginPage extends BasicPage {
         getLoginButton().click();
     }
 
-    public static void waitForErrorPopupToBeVisible() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.v-snack__content")));
-    }
 
-    public static String getErrorLoginPopupMessage() {
-        WebElement errorElement = driver.findElement(By.cssSelector("div > div.v-snack__content > ul > li"));
-        return errorElement.getText();
-
-    }
     public static void autoLogin(String email, String password){
         NavPage.clickOnLoginNavButton();
         getEmailInput().sendKeys(email);

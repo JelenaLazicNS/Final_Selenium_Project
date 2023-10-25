@@ -28,9 +28,9 @@ public class SignupTest extends BasicTest{
 
         singupPage.autoSingup(name, email, password, confirmPassword);
 
-        singupPage.waitForErrorPopupToBeVisible();
+        messagePopUpPage.waitForErrorPopupToBeVisible();
 
-        String errorMessage = singupPage.getErrorSingupPopupMessage();
+        String errorMessage = messagePopUpPage.getErrorPopupMessage();
         Assert.assertEquals(errorMessage, "E-mail already exists", "Message from popup should be like expected message");
 
         Assert.assertEquals(driver.getCurrentUrl(), baseUrl + "/signup", "Urls should be similar.");
