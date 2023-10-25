@@ -40,5 +40,21 @@ public class LoginTest extends BasicTest {
 
         Assert.assertEquals(driver.getCurrentUrl(), baseUrl + "/login", "Urls should be similar.");
     }
+    @Test (priority = 4, retryAnalyzer = RetryAnalyzer.class)
+    public void displaysErrorsWhenPasswordIsWrong(){
+        String email = "admin@admin.com";
+        String password = "password123";
+        navPage.clickOnLoginNavButton();
+
+        LoginPage.getEmailInput().sendKeys(email);
+        LoginPage.getPasswordInput().sendKeys(password);
+        LoginPage.clickOnLoginButton();
+        LoginPage.waitForErrorPopupToBeVisible();
+
+        String errorMessage = LoginPage.getErrorLoginPopupMessage();
+        Assert.assertEquals(errorMessage, "Wrong password", "Message from popup should be contains \"Wrong password\"" );
+
+        Assert.assertEquals(driver.getCurrentUrl(), baseUrl + "/login", "Urls should be similar.");
+    }
 
 }
