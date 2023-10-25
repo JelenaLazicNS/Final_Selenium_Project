@@ -16,7 +16,7 @@ public class NavPage extends BasicPage{
         return driver.findElement(By.cssSelector(".v-btn__content >.mdi-earth"));
     }
     public void clickOnLanguageButton(){
-        getLoginButton().click();
+        getLanguageButton().click();
     }
     public WebElement getEnglishLanguage(){
         return driver.findElement(By.cssSelector(".btnLocaleActivation"));
@@ -24,11 +24,11 @@ public class NavPage extends BasicPage{
     public void clickOnEnglishLanguage(){
         getEnglishLanguage().click();
     }
-    public WebElement getLoginButton () {
+    public WebElement getLoginNavButton () {
         return driver.findElement(By.cssSelector(" div.v-toolbar__items > a:nth-child(3) > span"));
     }
-    public void clickOnLoginButton () {
-        getLoginButton().click();
+    public void clickOnLoginNavButton () {
+        getLoginNavButton().click();
     }
 
 }
