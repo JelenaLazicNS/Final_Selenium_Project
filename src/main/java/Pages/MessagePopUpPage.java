@@ -16,6 +16,19 @@ public class MessagePopUpPage extends BasicPage {
     public void waitForErrorPopupToBeVisible() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.v-snack__content")));
     }
+    public void waitForVerifyPopUpMessage(){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".black--text.dlgVerifyAccount > i")));
+    }
+    public String getVerifPopupMessage(){
+        WebElement verifyPopupText = driver.findElement(By.cssSelector(".black--text.dlgVerifyAccount"));
+        return verifyPopupText.getText();
+    }
+    public WebElement getVerifyPopupCloseButton(){
+        return driver.findElement(By.cssSelector(".btnClose"));
+    }
+    public void clickOnVerifyPopupCloseButton(){
+        getVerifyPopupCloseButton().click();
+    }
 
 
 }
